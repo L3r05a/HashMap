@@ -1,0 +1,24 @@
+{
+  "name": "hashmap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L3r05a/HashMap.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/L3r05a/HashMap/issues"
+  },
+  "homepage": "https://github.com/L3r05a/HashMap#readme",
+  "devDependencies": {
+    "prettier": "3.9.10"
+  }
+}
