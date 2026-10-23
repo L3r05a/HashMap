@@ -33,16 +33,9 @@ export class HashMap {
   set(key, value) {
     //creates or updates entry
 
-    let index = this.hash(key);
+    const targetBucket = this.#getBucket(key);
 
-    //boundary check
-    if (index < 0 || index >= this.buckets.length) {
-      throw new Error("Trying to access index out of bounds");
-    }
-
-    let targetBucket = this.buckets[index];
-
-    let lookUpResult = targetBucket.lookUp(key);
+    const lookUpResult = targetBucket.lookUp(key);
 
     if (lookUpResult === null) {
       targetBucket.append({ key, value });
@@ -50,12 +43,53 @@ export class HashMap {
     } else {
       lookUpResult.value = value;
     }
+  }
 
-    //Growth check (later)
+  get(key) {
+    // returns values associated to key
+    const targetBucket = this.#getBucket(key);
+
+    const lookUpResult = targetBucket.lookUp(key);
+
+    if (lookUpResult === null) {
+      return undefined;
+    }
+    return lookUpResult.value;
+  }
+
+  has(key) {
+    // boolean if key is in the hashmap
+    const targetBucket = this.#getBucket(key);
+
+    const lookUpResult = targetBucket.lookUp(key);
+
+    return lookUpResult !== null;
+  }
+
+  remove(key) {
+    const targetBucket = this.#getBucket(key);
+    let result = targetBucket.remove(key);
+    if (result) {
+      this.#length--;
+    }
+    return result;
   }
 
   length() {
     // number of stored keys in the hashmap
     return this.#length;
+  }
+
+  // helpers
+  //bucket finder
+  #getBucket(key) {
+    const index = this.hash(key);
+
+    //boundary check
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    }
+
+    return this.buckets[index];
   }
 }

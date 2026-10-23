@@ -44,6 +44,32 @@ export class LinkedList {
     return null;
   }
 
+  remove(key) {
+    if (this.#head === null) {
+      return false;
+    }
+
+    let entry = this.#head.value;
+
+    if (entry.key === key) {
+      this.#head = this.#head.nextNode;
+      return true;
+    }
+
+    let previous = this.#head;
+    let current = previous.nextNode;
+    while (current !== null) {
+      if (current.value.key === key) {
+        previous.nextNode = current.nextNode;
+        return true;
+      } else {
+        previous = current;
+        current = current.nextNode;
+      }
+    }
+    return false;
+  }
+
   //returns string of nodes
   toString() {
     let current = this.#head;

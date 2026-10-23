@@ -18,11 +18,22 @@ test.set("entry3", "red");
 
 test.set("entry10", "blue");
 
+test.set("entry21", "purple");
+
 test.set("apple", "red");
 
 test.set("banana", "yellow");
 
 test.set("entry3", "magenta");
+
+// console.log(test.get("apple"));
+// console.log(test.get("entry3"));
+// console.log(test.get("nope"));
+// console.log(test.has("nope"));
+// console.log(test.remove("banana"));
+// console.log(test.remove("apple"));
+// console.log(test.remove("entry3"));
+// console.log(test.remove("bong"));
 
 printMap(test);
 
@@ -32,7 +43,7 @@ printMap(test);
 
 // console.log(test.hash("entry3"));
 // console.log(test.hash("entry10"));
-
+// console.log(test.hash("entry21"));
 // console.log(test.buckets);
 
 // const list = new LinkedList();
