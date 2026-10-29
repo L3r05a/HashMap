@@ -8,6 +8,7 @@ export class LinkedList {
   }
 
   // METHODS
+
   //add new node to end of list
   append(value) {
     const newNode = new Node(value);
@@ -28,9 +29,8 @@ export class LinkedList {
     }
   }
 
+  //returns object if found, null if not
   lookUp(key) {
-    //returns object if found, null if not
-
     let current = this.#head;
 
     while (current !== null) {
@@ -44,14 +44,15 @@ export class LinkedList {
     return null;
   }
 
+  //removes entry by key returns boolean if key found
   remove(key) {
+    // empty list
     if (this.#head === null) {
       return false;
     }
 
-    let entry = this.#head.value;
-
-    if (entry.key === key) {
+    // first key matches
+    if (this.#head.value.key === key) {
       this.#head = this.#head.nextNode;
       return true;
     }
@@ -62,12 +63,29 @@ export class LinkedList {
       if (current.value.key === key) {
         previous.nextNode = current.nextNode;
         return true;
-      } else {
-        previous = current;
-        current = current.nextNode;
       }
+      previous = current;
+      current = current.nextNode;
     }
     return false;
+    //end of loop, no match
+  }
+
+  //returns list
+  toArray() {
+    let current = this.#head;
+
+    let result = [];
+
+    while (current !== null) {
+      let entry = current.value;
+      //push the value of each node to result until  current is null
+
+      result.push(entry);
+      current = current.nextNode;
+    }
+
+    return result;
   }
 
   //returns string of nodes
