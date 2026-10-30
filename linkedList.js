@@ -67,11 +67,11 @@ export class LinkedList {
       previous = current;
       current = current.nextNode;
     }
-    return false;
     //end of loop, no match
+    return false;
   }
 
-  //returns list
+  //returns array of entry objects
   toArray() {
     let current = this.#head;
 
@@ -79,7 +79,7 @@ export class LinkedList {
 
     while (current !== null) {
       let entry = current.value;
-      //push the value of each node to result until  current is null
+      //push the value of each node to result until current is null
 
       result.push(entry);
       current = current.nextNode;

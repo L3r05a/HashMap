@@ -1,8 +1,12 @@
 import { HashMap } from "./hashMap.js";
+import { HashSet } from "./hashSet.js";
 
 const test = new HashMap();
+const testSet = new HashSet();
 
-// prints indexes with contents, total of indexes with content and capacity
+//--- HashMap ---//
+
+//prints total of map indexes with content and capacity
 function printMap(map) {
   map.buckets.forEach((bucket, index) => {
     const contents = bucket.toString();
@@ -26,49 +30,63 @@ test.set("ice cream", "white");
 test.set("jacket", "blue");
 test.set("kite", "pink");
 test.set("lion", "golden");
+
 test.set("moon", "silver");
+//13th entry triggers map growth
 
 test.set("moon", "river");
+//overwrites existing entry
 
-// test.set("entry10", "blue");
+console.log("Has apple:", test.has("apple"));
+//has
 
-// test.set("entry21", "purple");
+console.log("get lion:", test.get("lion"));
+//get
 
-// test.set("apple", "red");
+console.log(test.length());
+console.log(test.capacity);
+//lenght and capacity before remove
 
-// test.set("banana", "yellow");
-
-// console.log(test.get("entry3"));
-// console.log(test.get("nope"));
-// console.log(test.get("apple"));
 console.log(test.remove("moon"));
-// console.log(test.remove("entry3"));
-// console.log(test.remove("apple"));
-// console.log(test.remove("entry10"));
-// console.log(test.remove("entry21"));
-// test.clear();
+//remove
 
-console.log(test.get("moon"));
+console.log(test.length());
+console.log(test.capacity);
+//lenght and capacity after remove
 
-// test.set("apple", "red");
-// console.log(test.keys());
-// console.log(test.values());
-// console.log(test.entries());
+console.log(test.remove("albatros"));
+//remove missing key
+
+console.log(test.keys());
+console.log(test.values());
+console.log(test.entries());
+
+test.clear();
 
 printMap(test);
 
-// console.log(test.buckets[test.hash("apple")].toString());
-// console.log(test.buckets[test.hash("banana")].toString());
-// console.log(test.length());
+//--- HashSet --- //
 
-// console.log(test.hash("entry3"));
-// console.log(test.hash("entry10"));
-// console.log(test.hash("entry21"));
-// console.log(test.buckets);
+testSet.add("egg");
+testSet.add("spider");
+testSet.add("atom");
+testSet.add("nuts");
+testSet.add("milk");
+testSet.add("bones");
+testSet.add("car");
+testSet.add("leaf");
+testSet.add("rain");
+testSet.add("cloud");
+testSet.add("sun");
+testSet.add("moon");
+testSet.add("tears");
 
-// const list = new LinkedList();
+testSet.add("nuts"); //add
 
-// list.append({ key: "apple", value: "red" });
-// list.append({ key: "banana", value: "yellow" });
+console.log(testSet.has("spider")); //has
 
-// console.log(test.toString());
+console.log(testSet.remove("egg")); // remove
+
+console.log(testSet.keys()); //keys
+
+console.log(testSet.length()); //length

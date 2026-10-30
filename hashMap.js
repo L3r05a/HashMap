@@ -14,7 +14,7 @@ export class HashMap {
   }
 
   // methods
-  // creates hash for key (aka index of bucket)
+  // creates hash for key (index of bucket)
   hash(key) {
     let hashCode = 0;
 
@@ -60,9 +60,10 @@ export class HashMap {
 
     const lookUpResult = targetBucket.lookUp(key);
 
-    return lookUpResult !== null;
     // boolean, compares variable to strict inequality
+    return lookUpResult !== null;
   }
+
   //removes entry by key, returns boolean if key found
   remove(key) {
     const targetBucket = this.#getBucket(key);
@@ -99,7 +100,7 @@ export class HashMap {
   //returns an array of [key,value] arrays
   entries() {
     const array = this.#flatArray();
-    return array.map((all) => [all.key, all.value]);
+    return array.map((entry) => [entry.key, entry.value]);
   }
 
   // helpers
@@ -114,11 +115,11 @@ export class HashMap {
       //double capacity
 
       this.buckets = this.#initBuckets();
-      //recreate buckets
       this.#length = 0;
+      //recreate buckets
 
       backup.forEach(([a, b]) => this.set(a, b));
-      // //set all backedup entries
+      //re-set all backup entries
     }
   }
 
